@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Complete Theory of Conscious Self-Localization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 300px; 
+            max-height: 400px; 
+        }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+    </style>
+    <!-- Chosen Palette: Slate (Neutral Background) + Indigo (Primary Action) + Emerald (Success/Life) + Rose (Alert/Entropy) -->
+    <!-- Application Structure Plan:
+         1. Hero Section: High-level abstract and "Start Journey" hook.
+         2. Cognitive Dynamics (Level I): Interactive simulation of the classical "Self" particle in a valuation well. Focus on Stability vs. Exploration.
+         3. Quantization (Level II): Visualization of the Cognitive Granularity (\hbar_c) using a wavepacket width demonstration. Focus on "Fuzzy" vs "Sharp" states.
+         4. Biological Implementation (Level III): A step-by-step interactive "Conscious Event" trigger. User initiates a quantum bias which is amplified by chaos to cross a threshold.
+         5. Synthesis & Predictions: A dashboard of scenarios (e.g., Anesthesia, Fatigue) that updates model parameters and explains the outcome.
+         6. Conclusion: Final equation and summary.
+         Rationale: This linear progression mirrors the paper's "Level I -> II -> III" structure but adds interactivity at each step to build intuition before combining them.
+    -->
+    <!-- Visualization & Content Choices:
+         1. Cognitive Dynamics: Chart.js Line (Potential Well) + Bubble (Self Position). Goal: Show how Valuation holds self, Exploration pushes it. No SVG.
+         2. Quantization: Chart.js Line (Gaussian distribution). Goal: Demonstrate effect of \hbar_c. No SVG.
+         3. Bio-Projection: HTML/CSS Progress Bars & Animation. Goal: Visualize the rapid amplification scale (10^3 - 10^6). No SVG.
+         4. Predictions: Interactive Cards/Grid. Goal: Connect theory to real-world phenomena.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-2xl">🧠</span>
+                    <span class="font-bold text-lg tracking-tight text-slate-900 hidden sm:block">Conscious Self-Localization</span>
+                </div>
+                <div class="flex space-x-1 sm:space-x-4">
+                    <button onclick="scrollToSection('level1')" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-100 transition">Dynamics</button>
+                    <button onclick="scrollToSection('level2')" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-100 transition">Quantum</button>
+                    <button onclick="scrollToSection('level3')" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-100 transition">Collapse</button>
+                    <button onclick="scrollToSection('synthesis')" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-100 transition">Predictions</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-20 px-4 sm:px-6 lg:px-8">
+                <main class="mt-10 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-slate-900 sm:text-5xl md:text-6xl">
+                            <span class="block xl:inline">The Theory of</span>
+                            <span class="block text-indigo-600 xl:inline">Conscious Self-Localization</span>
+                        </h1>
+                        <p class="mt-3 text-base text-slate-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            From Cognitive Dynamics to Quantum Biological Projection. Explore the mathematical framework explaining how a finite, persistent subjective self emerges from physical chaos.
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <button onclick="scrollToSection('level1')" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg transition-all transform hover:scale-105">
+                                    Start Exploration
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-slate-50 flex items-center justify-center border-l border-slate-100">
+            <div class="p-8 text-center">
+                <div class="text-6xl mb-4">⚛️ 👁️ 🧬</div>
+                <p class="text-slate-400 font-mono text-sm">ψ(x,t) → Π_bio → Conscious Event</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Part I: Cognitive Dynamics -->
+    <section id="level1" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-10">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Level I</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    Cognitive State Space Dynamics
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-slate-500 lg:mx-auto">
+                    The "Self" is not a static object, but a dynamic stability. It exists in a cognitive state space, maintained by <strong>Intrinsic Valuation (&Phi;)</strong>, anchored by <strong>Memory (M)</strong>, and pushed by <strong>Exploratory Pressure (&Psi;)</strong>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Interactive Visualization -->
+                <div class="bg-slate-50 p-6 rounded-2xl shadow-inner border border-slate-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-slate-800">Dynamical Simulation</h3>
+                        <span class="text-xs font-mono text-slate-400">Eq. 6: Dual Flows</span>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="dynamicsChart"></canvas>
+                    </div>
+
+                    <div class="mt-6 space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 flex justify-between">
+                                <span>Valuation Strength (Stability)</span>
+                                <span id="valVal" class="text-indigo-600 font-bold">50%</span>
+                            </label>
+                            <input type="range" id="valuationSlider" min="10" max="100" value="50" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 flex justify-between">
+                                <span>Exploratory Pressure (Curiosity)</span>
+                                <span id="expVal" class="text-rose-500 font-bold">20%</span>
+                            </label>
+                            <input type="range" id="explorationSlider" min="0" max="100" value="20" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explainer Text -->
+                <div class="prose prose-slate">
+                    <p class="text-slate-600">
+                        Imagine the mind as a landscape. The <strong>Valuation Field (&Phi;)</strong> creates a valley—a "basin of attraction"—where the system prefers to be. This is your comfort zone, your identity.
+                    </p>
+                    <ul class="list-none space-y-3 pl-0">
+                        <li class="flex items-start">
+                            <span class="mr-3 text-indigo-500 text-xl font-bold">⬇️</span>
+                            <span><strong>Attraction:</strong> Without exploration, the self collapses into a static point (stagnation).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-rose-500 text-xl font-bold">⚡</span>
+                            <span><strong>Exploration (&Psi;):</strong> Internal uncertainty creates a repulsive force, pushing the self to explore new states and preventing fixation.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-emerald-500 text-xl font-bold">🔄</span>
+                            <span><strong>Balance:</strong> A healthy self is a dynamic equilibrium—orbiting the core identity without being frozen by it.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                        <p class="text-sm text-indigo-800 italic">
+                            "The finite self corresponds to a dynamically maintained localized region of state space that moves, adapts, yet persists."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part II: Quantization -->
+    <section id="level2" class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-10">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Level II</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    Quantized Self-Localization
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-slate-500 lg:mx-auto">
+                    Classical dynamics are continuous, but experience is discrete. We introduce the <strong>Cognitive Granularity Constant (&hbar;<sub>c</sub>)</strong>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
+                <!-- Text Content -->
+                <div class="prose prose-slate">
+                    <p class="text-slate-600">
+                        We move from a point particle to a wave function &psi;(x,t). This explains the "Unity of Experience" (through normalization) and "Attentional Focus".
+                    </p>
+                    <div class="my-4">
+                        <h4 class="font-bold text-slate-800">The Cognitive Granularity (&hbar;<sub>c</sub>)</h4>
+                        <p class="text-sm text-slate-500">
+                            This constant defines the minimum resolvable volume of experience. It determines the "pixel size" of your subjective reality.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                            <div class="text-2xl mb-2">🌫️</div>
+                            <h5 class="font-bold text-slate-800">High &hbar;<sub>c</sub></h5>
+                            <p class="text-xs text-slate-500">Coarse, blurred experience. Dream states, confusion, lower awareness.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                            <div class="text-2xl mb-2">🎯</div>
+                            <h5 class="font-bold text-slate-800">Low &hbar;<sub>c</sub></h5>
+                            <p class="text-xs text-slate-500">Fine-grained, sharp awareness. Intense focus, analytical thought.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Visualization -->
+                <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-slate-800">The Wavepacket of Self</h3>
+                        <span class="text-xs font-mono text-slate-400">Probability Distribution |&psi;|²</span>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="quantumChart"></canvas>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-slate-700 flex justify-between mb-2">
+                            <span>Cognitive Granularity (&hbar;<sub>c</sub>)</span>
+                            <span id="hbarVal" class="text-indigo-600 font-bold">Standard</span>
+                        </label>
+                        <input type="range" id="granularitySlider" min="1" max="50" value="20" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                        <div class="flex justify-between text-xs text-slate-400 mt-2">
+                            <span>Sharp (Focus)</span>
+                            <span>Blurry (Dream)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part III: Biological Implementation -->
+    <section id="level3" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-10">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Level III</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    Quantum Biological Projection
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-slate-500 lg:mx-auto">
+                    How does abstract math become felt reality? Through <strong>Chaotic Amplification</strong> and <strong>Threshold Crossing</strong>.
+                </p>
+            </div>
+
+            <!-- The Event Pipeline Viz -->
+            <div class="max-w-4xl mx-auto bg-slate-900 rounded-3xl p-8 shadow-2xl text-white relative overflow-hidden">
+                <!-- Background decorative elements -->
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-indigo-500 rounded-full opacity-10 blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-emerald-500 rounded-full opacity-10 blur-3xl"></div>
+
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold">The Conscious Event Pipeline</h3>
+                    <p class="text-slate-400 text-sm">Π<sub>bio</sub>(lim D<sub>chaos</sub>(Q(ψ)))</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Step 1: Quantum Bias -->
+                    <div class="relative">
+                        <div class="flex justify-between mb-2 text-sm font-medium">
+                            <span class="text-indigo-300">1. Quantum Bias Q(ψ)</span>
+                            <span id="step1-status" class="text-slate-500">Waiting...</span>
+                        </div>
+                        <div class="h-4 bg-slate-800 rounded-full overflow-hidden">
+                            <div id="bar-quantum" class="h-full bg-indigo-500 w-0 transition-all duration-500 ease-out"></div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Sub-thermal bias (ε ≪ kBT) extracted from superposition.</p>
+                    </div>
+
+                    <!-- Step 2: Chaotic Amplification -->
+                    <div class="relative">
+                        <div class="flex justify-between mb-2 text-sm font-medium">
+                            <span class="text-rose-300">2. Chaotic Amplification D<sub>chaos</sub></span>
+                            <span id="step2-status" class="text-slate-500">Idle</span>
+                        </div>
+                        <div class="h-4 bg-slate-800 rounded-full overflow-hidden relative">
+                            <div id="bar-chaos" class="h-full bg-gradient-to-r from-rose-500 to-orange-500 w-0 transition-all duration-1000 ease-in"></div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Lyapunov exponent magnifies microscopic bias 10⁶ times in milliseconds.</p>
+                    </div>
+
+                    <!-- Step 3: Threshold & Projection -->
+                    <div class="relative">
+                        <div class="flex justify-between mb-2 text-sm font-medium">
+                            <span class="text-emerald-300">3. Biological Projection Π<sub>bio</sub></span>
+                            <span id="step3-status" class="text-slate-500">Sub-threshold</span>
+                        </div>
+                        <div class="h-4 bg-slate-800 rounded-full overflow-hidden flex">
+                            <!-- Threshold Marker -->
+                            <div class="w-[80%] border-r-2 border-dashed border-slate-600 h-full relative">
+                                <span class="absolute right-1 top-0 text-[10px] text-slate-600">xc (Threshold)</span>
+                            </div>
+                            <div id="bar-collapse" class="absolute h-full bg-emerald-500 w-0 transition-all duration-300"></div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Thermodynamic irreversibility. Action potential or Global Workspace ignition.</p>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex justify-center">
+                    <button id="triggerBtn" class="group relative px-8 py-4 bg-white text-slate-900 font-bold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all active:scale-95">
+                        <span class="flex items-center gap-2">
+                            Generate Conscious Event
+                            <span class="group-hover:rotate-180 transition-transform duration-500">⚛️</span>
+                        </span>
+                    </button>
+                </div>
+                
+                <div id="event-result" class="mt-6 text-center h-8 font-mono text-emerald-400 opacity-0 transition-opacity">
+                    Event #<span id="event-id">001</span>: Collapse Successful. Experience Registered.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part IV: Synthesis & Predictions -->
+    <section id="synthesis" class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-10">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Predictions</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    Testable Scenarios
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-slate-500 lg:mx-auto">
+                    The theory bridges mathematical parameters with real-world physiological states. Click a scenario to see the predicted model adjustments.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Scenario Buttons -->
+                <button onclick="applyScenario('baseline')" class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-slate-200 text-left transition-all focus:ring-2 focus:ring-indigo-500">
+                    <div class="text-2xl mb-2">👤</div>
+                    <h4 class="font-bold text-slate-900">Normal Waking</h4>
+                    <p class="text-sm text-slate-500 mt-2">Baseline parameters. Balanced exploration and stability.</p>
+                </button>
+                
+                <button onclick="applyScenario('anesthesia')" class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-slate-200 text-left transition-all focus:ring-2 focus:ring-indigo-500">
+                    <div class="text-2xl mb-2">💉</div>
+                    <h4 class="font-bold text-slate-900">Anesthesia</h4>
+                    <p class="text-sm text-slate-500 mt-2">Threshold manipulation. Collapse prevented.</p>
+                </button>
+
+                <button onclick="applyScenario('psychedelic')" class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-slate-200 text-left transition-all focus:ring-2 focus:ring-indigo-500">
+                    <div class="text-2xl mb-2">🍄</div>
+                    <h4 class="font-bold text-slate-900">High Entropy State</h4>
+                    <p class="text-sm text-slate-500 mt-2">Increased &hbar;<sub>c</sub> and Exploration (&Psi;). Structure dissolves.</p>
+                </button>
+            </div>
+
+            <!-- Prediction Dashboard -->
+            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 id="scenario-title" class="text-2xl font-bold text-slate-900 mb-4">Select a Scenario</h3>
+                    <p id="scenario-desc" class="text-slate-600 mb-6">
+                        Interact with the cards above to see how different states of consciousness map to the variables &Phi;, &Psi;, &hbar;<sub>c</sub>, and &Pi;<sub>bio</sub>.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                            <span class="font-medium text-slate-700">Self-Localization (&Phi;)</span>
+                            <div class="w-1/2 h-2 bg-slate-200 rounded-full overflow-hidden">
+                                <div id="bar-phi" class="h-full bg-indigo-500 w-1/2 transition-all duration-500"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                            <span class="font-medium text-slate-700">Exploration (&Psi;)</span>
+                            <div class="w-1/2 h-2 bg-slate-200 rounded-full overflow-hidden">
+                                <div id="bar-psi" class="h-full bg-rose-500 w-1/4 transition-all duration-500"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                            <span class="font-medium text-slate-700">Granularity (&hbar;<sub>c</sub>)</span>
+                            <div class="w-1/2 h-2 bg-slate-200 rounded-full overflow-hidden">
+                                <div id="bar-hbar" class="h-full bg-purple-500 w-1/6 transition-all duration-500"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-100 flex flex-col justify-center">
+                    <h4 class="font-bold text-slate-800 mb-2">Theoretical Prediction</h4>
+                    <div id="prediction-text" class="text-slate-600 italic">
+                        "Waiting for input..."
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-slate-200">
+                        <h4 class="font-bold text-slate-800 mb-2">Observable Consequence</h4>
+                        <div id="consequence-text" class="text-slate-600">
+                            ---
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-white text-2xl font-bold mb-6">The Final Equation</h2>
+            <div class="inline-block bg-slate-800 px-8 py-6 rounded-xl border border-slate-700 shadow-2xl mb-8 overflow-x-auto max-w-full">
+                <code class="text-emerald-400 text-lg sm:text-2xl font-mono">
+                    ψ<sub>k+1</sub> = e<sup>-iĤΔt/ℏ<sub>c</sub></sup> [ ψ<sub>k</sub> + δ( Conscious Event<sub>k</sub> ) ]
+                </code>
+            </div>
+            <p class="max-w-2xl mx-auto text-sm">
+                Consciousness is what it feels like to be a self-localizing dynamical system navigating its state space through a sequence of discrete, irreversible projections amplified from quantum biases.
+            </p>
+            <div class="mt-8 text-xs text-slate-600">
+                Interactive adaptation of "The Complete Theory of Conscious Self-Localization".
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- Navigation ---
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- Section 1: Dynamics Chart (Chart.js) ---
+        const ctxDynamics = document.getElementById('dynamicsChart').getContext('2d');
+        
+        // Data generation for Potential Well (Parabola)
+        const generatePotential = (strength) => {
+            const data = [];
+            for (let x = -10; x <= 10; x += 0.5) {
+                // Potential V(x) = k*x^2. Higher strength = steeper well.
+                const y = (strength / 100) * (x * x); 
+                data.push({x: x, y: y});
+            }
+            return data;
+        };
+
+        // Self particle state
+        let selfPosition = { x: 0, y: 0 };
+        let explorationFactor = 0.2; // From slider
+        let valuationStrength = 0.5; // From slider
+
+        const dynamicsChart = new Chart(ctxDynamics, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                        label: 'Valuation Landscape (Φ)',
+                        data: generatePotential(50),
+                        showLine: true,
+                        borderColor: 'rgba(79, 70, 229, 0.4)', // Indigo
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: true,
+                        tension: 0.4,
+                        order: 2
+                    },
+                    {
+                        label: 'The Self (x)',
+                        data: [{x: 0, y: 0}],
+                        backgroundColor: '#ec4899', // Pink/Rose
+                        borderColor: '#fff',
+                        borderWidth: 2,
+                        pointRadius: 10,
+                        pointHoverRadius: 12,
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 0 }, // Handled by manual loop
+                scales: {
+                    x: { min: -10, max: 10, grid: { display: false }, title: {display: true, text: 'Cognitive State Space'} },
+                    y: { min: -5, max: 50, display: false }
+                },
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+
+        // Animation Loop for Dynamics
+        let velocity = 0;
+        function updateDynamics() {
+            // Physics logic: 
+            // Force = -Gradient(Potential) + Noise
+            // Gradient of k*x^2 is 2*k*x
+            const k = valuationStrength / 50; 
+            const gradient = 2 * k * selfPosition.x;
+            
+            // Random exploration force (-1 to 1) * magnitude
+            const noise = (Math.random() - 0.5) * 2 * (explorationFactor * 2);
+
+            // Update velocity (damping factor 0.9 to prevent infinite oscillation)
+            velocity = (velocity * 0.9) - (gradient * 0.1) + noise;
+            
+            // Update position
+            selfPosition.x += velocity;
+
+            // Boundary checks
+            if (selfPosition.x > 10) { selfPosition.x = 10; velocity *= -1; }
+            if (selfPosition.x < -10) { selfPosition.x = -10; velocity *= -1; }
+
+            // Calculate Y based on potential for visual placement (sitting on the line)
+            selfPosition.y = (valuationStrength / 100) * (selfPosition.x * selfPosition.x);
+
+            // Update Chart
+            dynamicsChart.data.datasets[1].data[0] = selfPosition;
+            dynamicsChart.data.datasets[0].data = generatePotential(valuationStrength);
+            dynamicsChart.update();
+
+            requestAnimationFrame(updateDynamics);
+        }
+
+        // Event Listeners for Sliders
+        document.getElementById('valuationSlider').addEventListener('input', (e) => {
+            valuationStrength = parseInt(e.target.value);
+            document.getElementById('valVal').innerText = valuationStrength + '%';
+        });
+
+        document.getElementById('explorationSlider').addEventListener('input', (e) => {
+            explorationFactor = parseInt(e.target.value) / 10;
+            document.getElementById('expVal').innerText = e.target.value + '%';
+        });
+
+        // Start Loop
+        requestAnimationFrame(updateDynamics);
+
+
+        // --- Section 2: Quantum Chart (Chart.js) ---
+        const ctxQuantum = document.getElementById('quantumChart').getContext('2d');
+        
+        // Gaussian function
+        const generateGaussian = (sigma) => {
+            const data = [];
+            // Range -5 to 5
+            for (let x = -5; x <= 5; x += 0.1) {
+                // 1/(sigma*sqrt(2pi)) * exp(-0.5 * (x/sigma)^2)
+                const y = (1 / (sigma * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * Math.pow(x / sigma, 2));
+                data.push({x: x, y: y});
+            }
+            return data;
+        };
+
+        const quantumChart = new Chart(ctxQuantum, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Probability Amplitude |ψ|²',
+                    data: generateGaussian(1), // Default sigma 1
+                    borderColor: '#8b5cf6', // Violet
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { type: 'linear', min: -5, max: 5, grid: { display: false } },
+                    y: { display: false, min: 0, max: 1.5 } // Fixed max to show height change
+                },
+                plugins: {
+                    legend: { display: true },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Probability: ' + context.parsed.y.toFixed(3);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        document.getElementById('granularitySlider').addEventListener('input', (e) => {
+            // Slider 1 (Sharp) to 50 (Blurry)
+            // Map 1 -> Sigma 0.3, 50 -> Sigma 2.5
+            const val = parseInt(e.target.value);
+            const sigma = 0.3 + (val / 50) * 2.2;
+            
+            let label = "Standard";
+            if (val < 15) label = "High Focus (Low ℏc)";
+            if (val > 35) label = "Dream State (High ℏc)";
+            document.getElementById('hbarVal').innerText = label;
+
+            quantumChart.data.datasets[0].data = generateGaussian(sigma);
+            quantumChart.update();
+        });
+
+
+        // --- Section 3: Biological Projection Logic ---
+        const triggerBtn = document.getElementById('triggerBtn');
+        const barQuantum = document.getElementById('bar-quantum');
+        const barChaos = document.getElementById('bar-chaos');
+        const barCollapse = document.getElementById('bar-collapse');
+        const status1 = document.getElementById('step1-status');
+        const status2 = document.getElementById('step2-status');
+        const status3 = document.getElementById('step3-status');
+        const eventResult = document.getElementById('event-result');
+        let eventCount = 1;
+        let isProcessing = false;
+
+        triggerBtn.addEventListener('click', () => {
+            if (isProcessing) return;
+            isProcessing = true;
+            triggerBtn.disabled = true;
+            triggerBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            // Reset
+            barQuantum.style.width = '0%';
+            barChaos.style.width = '0%';
+            barCollapse.style.width = '0%';
+            eventResult.classList.remove('opacity-100');
+            eventResult.classList.add('opacity-0');
+
+            // Step 1: Quantum Bias (Fast)
+            status1.innerText = "Extracting Q(ψ)...";
+            status1.classList.add('text-indigo-300');
+            setTimeout(() => {
+                barQuantum.style.width = '15%'; // Small bias
+                status1.innerText = "Bias Detected (ε)";
+                
+                // Step 2: Chaotic Amplification (Exp Growth)
+                setTimeout(() => {
+                    status2.innerText = "Amplifying...";
+                    status2.classList.add('text-rose-300');
+                    barChaos.style.width = '100%'; // Full growth
+                    
+                    // Step 3: Projection
+                    setTimeout(() => {
+                        status2.innerText = "Macroscopic State Reached";
+                        status3.innerText = "Crossing Threshold...";
+                        
+                        const successful = Math.random() > 0.1; // 90% success rate for demo
+                        
+                        if (successful) {
+                            barCollapse.style.width = '100%';
+                            barCollapse.classList.remove('bg-red-500');
+                            barCollapse.classList.add('bg-emerald-500');
+                            status3.innerText = "Threshold Crossed (xc)";
+                            status3.classList.add('text-emerald-300');
+                            
+                            setTimeout(() => {
+                                eventResult.innerHTML = `Event #<span id="event-id">${String(eventCount++).padStart(3, '0')}</span>: Collapse Successful. Experience Registered.`;
+                                eventResult.classList.remove('opacity-0');
+                                eventResult.classList.add('opacity-100');
+                                finishEvent();
+                            }, 300);
+                        } else {
+                            // Fizzle
+                            barCollapse.style.width = '40%';
+                            barCollapse.classList.remove('bg-emerald-500');
+                            barCollapse.classList.add('bg-red-500');
+                            status3.innerText = "Fizzled (Sub-threshold)";
+                            finishEvent();
+                        }
+                    }, 800);
+                }, 400);
+            }, 100);
+        });
+
+        function finishEvent() {
+            setTimeout(() => {
+                isProcessing = false;
+                triggerBtn.disabled = false;
+                triggerBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                status1.classList.remove('text-indigo-300');
+                status2.classList.remove('text-rose-300');
+                status3.classList.remove('text-emerald-300');
+            }, 1500);
+        }
+
+        // --- Section 4: Scenarios ---
+        const scenarios = {
+            baseline: {
+                title: "Normal Waking State",
+                desc: "The system is in dynamic equilibrium. Valuation creates a stable self, but exploration allows for adaptation. Granularity is optimized for survival.",
+                phi: '50%',
+                psi: '25%',
+                hbar: '15%',
+                prediction: "ψ maintains phase coherence; Π_bio triggers regularly (~40Hz).",
+                consequence: "Coherent, continuous stream of consciousness with moderate focus."
+            },
+            anesthesia: {
+                title: "Anesthesia / Deep Coma",
+                desc: "Microtubule disruption or threshold elevation. The quantum bias Q(ψ) cannot be amplified sufficiently to cross xc.",
+                phi: '10%', // Weak attractor
+                psi: '10%', // Low exploration
+                hbar: '80%', // Massive granularity (blur)
+                prediction: "D_chaos(Q) < xc. Π_bio returns 0. No collapse.",
+                consequence: "Loss of consciousness. Time perception vanishes."
+            },
+            psychedelic: {
+                title: "High Entropy / Psychedelic",
+                desc: "Relaxation of priors (Φ). Exploration (Ψ) dominates. The 'Self' attractor flattens, allowing the system to visit distant state space regions.",
+                phi: '20%', // Low stability
+                psi: '90%', // High exploration
+                hbar: '50%', // Coarser resolution
+                prediction: "∇Φeff weakens. System explores periphery. High rate of random projections.",
+                consequence: "Ego dissolution. Vivid, unstable imagery. Enhanced associativity."
+            }
+        };
+
+        function applyScenario(key) {
+            const data = scenarios[key];
+            
+            document.getElementById('scenario-title').innerText = data.title;
+            document.getElementById('scenario-desc').innerText = data.desc;
+            
+            document.getElementById('bar-phi').style.width = data.phi;
+            document.getElementById('bar-psi').style.width = data.psi;
+            document.getElementById('bar-hbar').style.width = data.hbar;
+            
+            document.getElementById('prediction-text').innerText = `"${data.prediction}"`;
+            document.getElementById('consequence-text').innerText = data.consequence;
+
+            // Also update the charts above to reflect this!
+            // Update Slider values and trigger events manually to sync visualizers
+            if (key === 'baseline') {
+                updateDynamicsSim(50, 20);
+                updateQuantumSim(20);
+            } else if (key === 'anesthesia') {
+                updateDynamicsSim(10, 5); // Flat, no move
+                updateQuantumSim(80); // Very flat
+            } else if (key === 'psychedelic') {
+                updateDynamicsSim(20, 90); // Wild movement
+                updateQuantumSim(50); // Blurry
+            }
+        }
+
+        function updateDynamicsSim(val, exp) {
+            valuationStrength = val;
+            explorationFactor = exp / 10;
+            document.getElementById('valuationSlider').value = val;
+            document.getElementById('explorationSlider').value = exp;
+            document.getElementById('valVal').innerText = val + '%';
+            document.getElementById('expVal').innerText = exp + '%';
+        }
+
+        function updateQuantumSim(hbar) {
+            document.getElementById('granularitySlider').value = hbar;
+            // Trigger input event logic manually
+            const event = new Event('input');
+            document.getElementById('granularitySlider').dispatchEvent(event);
+        }
+
+        // Init Baseline
+        applyScenario('baseline');
+
+    </script>
+</body>
+</html>
